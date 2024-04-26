@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System;
 using System.Xml.Linq;
+
 public class Book
 {
     private string title; private string author;
@@ -37,6 +38,7 @@ public class User
     private string name;
     private int id;
     private int phoneNum;
+    private List<string> borrowedBooks = new List<string>();
     public string Name
     {
         get { return name; }
@@ -60,14 +62,19 @@ public class User
         Name = aname;
         ID = aid;
         PhoneNum = aphoneNum;
+        borrowedBooks = new List<string>();
     }
-    public void Borrowbook(string Book)
+    public void Borrowbook(string Booktitle)
     {
-        if (Book.IsAvailable)
-        {
-
-        }
+        borrowedBooks.Add(Booktitle);
+        Console.WriteLine("You have borrowed {bookTitle}.\");");
     }
+    public void ReturnBook(string Booktitle)
+    {
+        borrowedBooks.Remove(Booktitle);
+        Console.WriteLine("book returned");
+    }
+   
 }
 public class FicBook : Book
 {
